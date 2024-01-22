@@ -110,7 +110,6 @@ void vector_delete(vector_t *v) {
     /* YOUR SOLUTION HERE */
     if(v == NULL) return;
     free(v->data);
-    // printf("?\n");
     free(v);
 }
 
