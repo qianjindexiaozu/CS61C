@@ -109,12 +109,8 @@ int vector_get(vector_t *v, size_t loc) {
 void vector_delete(vector_t *v) {
     /* YOUR SOLUTION HERE */
     if(v == NULL) return;
-    for(int i = 0; i < v->size; i++){
-        int *next = v->data;
-        v->data++;
-        free(next);
-        // printf("?\n");
-    }
+    free(v->data);
+    // printf("?\n");
     free(v);
 }
 
@@ -134,7 +130,7 @@ void vector_set(vector_t *v, size_t loc, int value) {
     }
     int oldSize = v->size;
     v->size = loc + 1;
-    v->data = (int *)realloc(v->data, v->size);
+    v->data = (int *)realloc(v->data, sizeof(int) * (loc + 1));
     if(v->data == NULL){
         free(v);
         allocation_failed();
